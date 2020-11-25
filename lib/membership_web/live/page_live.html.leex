@@ -1,50 +1,17 @@
-<h1 class="text-red-500 text-5xl font-bold text-center">Tailwind CSS</h1>
-
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>Peace of mind from prototype to production</p>
-
-  <form phx-change="suggest" phx-submit="search">
-    <input type="text" name="q" value="<%= @query %>" placeholder="Live dependency search" list="results" autocomplete="off"/>
-    <datalist id="results">
-      <%= for {app, _vsn} <- @results do %>
-        <option value="<%= app %>"><%= app %></option>
-      <% end %>
-    </datalist>
-    <button type="submit" phx-disable-with="Searching...">Go to Hexdocs</button>
-  </form>
-</section>
-
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.5/CHANGELOG.md">v1.5 Changelog</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-      <li>
-        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
-      </li>
-    </ul>
-  </article>
-</section>
+<div class="flex flex-col sm:flex-row">
+  <!-- Card 1 -->
+  <div class="sm:w-1/4 p-2">
+    <div class="bg-white px-6 py-8 rounded-lg shadow-lg text-center">
+      <div class="mb-3">
+        <img
+          class="w-auto mx-auto rounded-full shadow-lg"
+          src="https://i.pravatar.cc/250?img=66"
+          alt=""
+        />
+      </div>
+      <h2 class="text-xl font-medium text-gray-700 mb-5">Pande Muliada</h2>
+      <a href="#" class="px-4 py-2 bg-blue-500 text-white rounded-full">Edit</a>
+      <a href="#" class="px-4 py-2 bg-red-500 text-white rounded-full">Delete</a>
+    </div>
+  </div>
+</div>
