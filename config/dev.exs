@@ -58,7 +58,7 @@ config :membership, MembershipWeb.Endpoint,
 config :membership, MembershipWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/static/[^uploads].*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/membership_web/(live|views)/.*(ex)$",
       ~r"lib/membership_web/templates/.*(eex)$"
