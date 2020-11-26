@@ -1,0 +1,20 @@
+<div class="flex flex-col sm:flex-row">
+    <!-- Card 1 -->
+    <div class="sm:w-1/4 p-2">
+      <div class="bg-white px-6 py-8 rounded-lg shadow-lg text-center">
+        <div class="mb-3">
+          <%= for url <- @user.photo_urls do %>
+              <img
+                class="w-auto mx-auto shadow-lg"
+                src="<%= url %>"
+                alt=""
+              />
+          <% end %>
+        </div>
+        <h2 class="text-xl font-medium text-gray-700 mb-5"><%= @user.name %></h2>
+        <%= live_patch "Edit", to: Routes.user_index_path(@socket, :edit, @user), class: "px-4 py-2 bg-blue-500 text-white rounded-full" %>
+
+        <%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @user.id, data: [confirm: "Are you sure?"], class: "px-4 py-2 bg-red-500 text-white rounded-full" %>
+      </div>
+    </div>
+  </div>
