@@ -9,6 +9,9 @@
     user: @user,
     return_to: Routes.user_index_path(@socket, :index) %>
 <% end %>
-<%= for user <- @users do %>
-  <%= live_component @socket, MembershipWeb.UserLive.CardComponent, id: user.id, user: user %>
-<% end %>
+
+<div class="flex flex-col sm:flex-row">
+  <%= for user <- @users do %>
+    <%= live_component @socket, MembershipWeb.UserLive.CardComponent, id: user.id, user: user %>
+  <% end %>
+</div>

@@ -35,9 +35,14 @@ defmodule MembershipWeb.UserLive.Index do
   @impl true
   def handle_event("delete", %{"id" => id}, socket) do
     user = Accounts.get_user!(id)
-    {:ok, _} = Accounts.delete_user(user)
+    case Accounts.delete_user(user) do
+      {:ok, user} ->
+        for url <- user.photo_urls do
+          File.rm!("priv/static/#{url}")
+        end
+        {:noreply, assign(socket, :users, list_users())}
+    end
 
-    {:noreply, assign(socket, :users, list_users())}
   end
 
   defp list_users do
