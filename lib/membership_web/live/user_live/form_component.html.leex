@@ -38,19 +38,22 @@
 
   </form>
   <%= for entry <- @uploads.photo.entries do %>
-    <div class="row">
-      <div class="column">
-        <%= live_img_preview entry, height: 80, width: 80 %>
+    <div class="lg:col-span-2">
+      <div class="px-7 py-7">
+        <%= live_img_preview entry, width: "300", height: "300" %>
       </div>
-      <h5><%= entry.client_name %></h5>
-      <div class="column">
-        <progress max="100" value="<%= entry.progress %>" />
+      <h5 class="px-7 text-lg font-bold"><%= entry.client_name %></h5>
+      <div class="px-7 py-3">
+        <div class="shadow bg-grey-light">
+          <div class="bg-green-300 text-lg font-bold leading-none py-2 text-center text-white" style="width: <%= entry.progress %>%">
+            <%= entry.progress %>%
+          </div>
+        </div>
       </div>
-      <span><%= entry.progress %>%</span>
-      <div class="column">
-        <a href="#" class="button" phx-click="cancel-entry" phx-value-ref="<%= entry.ref %>" phx-target="<%= @myself %>">cancel</a>
+      <div class="text-right px-7">
+        <a href="#" class="text-lg font-bold text-red-500" phx-click="cancel-entry" phx-value-ref="<%= entry.ref %>" phx-target="<%= @myself %>">cancel</a>
       </div>
     </div>
   <% end %>
-  </div>
+
 </div>
