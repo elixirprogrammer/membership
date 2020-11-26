@@ -14,5 +14,6 @@ defmodule Membership.Accounts.User do
     user
     |> cast(attrs, [:name, :photo_urls])
     |> validate_required([:name])
+    |> validate_length(:name, min: 5)
   end
 end

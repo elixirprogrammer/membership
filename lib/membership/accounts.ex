@@ -49,11 +49,17 @@ defmodule Membership.Accounts do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_user(attrs \\ %{}) do
-    %User{}
+  def create_user(%User{} = user, attrs, after_save \\ &{:ok, &1}) do
+    user
     |> User.changeset(attrs)
     |> Repo.insert()
+    |> after_save(after_save)
   end
+
+  defp after_save({:ok, post}, func) do
+    {:ok, _post} = func.(post)
+  end
+  defp after_save(error, _func), do: error
 
   @doc """
   Updates a user.
