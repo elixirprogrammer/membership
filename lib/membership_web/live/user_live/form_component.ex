@@ -34,6 +34,10 @@ defmodule MembershipWeb.UserLive.FormComponent do
     save_user(socket, socket.assigns.action, user_params)
   end
 
+  def handle_event("cancel-entry", %{"ref" => ref}, socket) do
+    {:noreply, cancel_upload(socket, :photo, ref)}
+  end
+
   defp save_user(socket, :edit, user_params) do
     user = put_photo_urls(socket, socket.assigns.user)
     user_params = Map.put_new(user_params, "photo_urls", user.photo_urls)
