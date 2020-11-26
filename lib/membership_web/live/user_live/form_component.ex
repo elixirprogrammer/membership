@@ -15,7 +15,7 @@ defmodule MembershipWeb.UserLive.FormComponent do
      |> assign(:uploaded_files, [])
      |> allow_upload(:photo,
       accept: ~w(.jpg .jpeg .png .pdf),
-      max_entries: 2,
+      max_entries: 1,
       max_file_size: 9_000_000
     )}
   end

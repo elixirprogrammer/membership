@@ -21,6 +21,16 @@
     </div>
     <%= error_tag f, :name %>
 
+    <div class="col-span-2">
+      <%= for url <- @user.photo_urls do %>
+          <img
+            class="w-full h-96"
+            src="<%= url %>"
+            alt=""
+          />
+      <% end %>
+    </div>
+
     <div class="col-span-2 border border-dashed border-gray-500 relative" phx-drop-target="<%= @uploads.photo.ref %>">
       <%= live_file_input @uploads.photo, class: "cursor-pointer relative block opacity-0 w-full h-full p-20 z-50" %>
       <div class="text-center p-10 absolute top-0 right-0 left-0 m-auto">
