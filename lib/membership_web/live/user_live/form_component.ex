@@ -39,7 +39,9 @@ defmodule MembershipWeb.UserLive.FormComponent do
     user_params = Map.put_new(user_params, "photo_urls", user.photo_urls)
     case Accounts.update_user(socket.assigns.user, user_params, &consume_photos(socket, &1)) do
       {:ok, _user} ->
-        File.rm!("priv/static/#{socket.assigns.user.photo_urls}")
+        for url <- socket.assigns.user.photo_urls do
+          File.rm!("priv/static/#{url}")
+        end
         {:noreply,
          socket
          |> put_flash(:info, "User updated successfully")
